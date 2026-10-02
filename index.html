@@ -24,17 +24,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#1d3f7a;--navy-ink:#13284f;
+  --navy:#1d3f7a;--btn:#2f5fa8;
   --bg:#f3f6fb;--card:#ffffff;--ink:#1a2540;--muted:#4a5672;--line:#dde4ef;
-  /* section tints */
-  --t-form:#ffffff;--t-track:#eef7e0;--t-stat:#e7f0fb;--t-table:#ffffff;--t-bonus:#fdf6e3;--t-backup:#f1eefa;
-  --h-track:#3d6b12;--h-stat:#1d3f7a;--h-table:#1d3f7a;--h-bonus:#8a5a00;--h-backup:#55408f;
+  --t-track:#eef7e0;--t-stat:#e7f0fb;--t-bonus:#fdf6e3;--t-backup:#f1eefa;--t-sales:#e9f6f3;--t-train:#fdeef3;--t-sim:#eef0fb;
+  --h-track:#3d6b12;--h-stat:#1d3f7a;--h-bonus:#8a5a00;--h-backup:#55408f;--h-sales:#14675a;--h-train:#9a2f5a;--h-sim:#3b4aa0;
   --th:#dce8f7;--th-ink:#1d3f7a;--zebra:#f7f9fd;
   --ok:#a8d86a;--ok-soft:#e3f3cc;--ok-ink:#2f5a07;
   --warn:#f5b941;--warn-soft:#fff1d1;--warn-ink:#6b4500;
   --bad:#e06464;--bad-soft:#fde6e6;--bad-ink:#8c1d1d;
   --future:#e6ebf3;--future-ink:#5c6884;
-  --hero:#cfe2fb;--hero-ink:#13284f;--hero-sub:#35558a;
   color-scheme:light;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -44,34 +42,45 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:'Mali','Sarabun'
 b,strong{font-weight:700}
 header{background:linear-gradient(135deg,#d6e8fd 0%,#e4f3d2 100%);color:#13284f;border-bottom:1px solid #cfdcef;padding:20px 16px 56px;position:relative;overflow:hidden}
 header::after{content:"";position:absolute;right:-40px;bottom:-70px;width:180px;height:180px;border:22px solid #a8d86a;border-radius:50%;opacity:.45}
-.brand{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:14px;position:relative;z-index:1;max-width:860px;margin:0 auto}
 .logo{width:68px;height:68px;border-radius:16px;flex:none;box-shadow:0 4px 12px rgba(29,63,122,.25)}
 header h1{margin:0;font-size:22px;line-height:1.3;font-weight:700;color:#1d3f7a}
 header p{margin:4px 0 0;color:#3a5a8c;font-size:15px;font-weight:600}
 main{max-width:860px;margin:-38px auto 0;padding:0 12px 40px;position:relative;z-index:1}
 .card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:14px;border:1px solid var(--line);box-shadow:0 2px 6px rgba(30,50,90,.06)}
-.sec-form{background:var(--t-form)}
 .sec-track{background:var(--t-track);border-color:transparent}.sec-track h2{color:var(--h-track)}
-.sec-stat{background:var(--card)}.sec-stat h2{color:var(--h-stat)}
-.sec-table{background:var(--t-table)}.sec-table h2{color:var(--h-table)}
+.sec-stat h2{color:var(--h-stat)}
 .sec-bonus{background:var(--t-bonus);border-color:transparent}.sec-bonus h2{color:var(--h-bonus)}
 .sec-backup{background:var(--t-backup);border-color:transparent}.sec-backup h2{color:var(--h-backup)}
+.sec-sales{background:var(--t-sales);border-color:transparent}.sec-sales h2{color:var(--h-sales)}
+.sec-train{background:var(--t-train);border-color:transparent}.sec-train h2{color:var(--h-train)}
+.sec-sim{background:var(--t-sim);border-color:transparent}.sec-sim h2{color:var(--h-sim)}
+.sec-table h2,.sec-form h2{color:var(--navy)}
+h2{font-size:20px;font-weight:700;margin:0 0 8px}
+h3{font-size:17px;margin:14px 0 6px;color:var(--ink)}
 .agents{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
 .chip{flex:none;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
 .chip.on{background:var(--th);color:var(--th-ink);border-color:var(--navy)}
 .chip .dot{width:11px;height:11px;border-radius:50%}
 .chip.add{border-style:dashed;color:var(--muted)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 14px;padding:4px;background:var(--card);border-radius:14px;border:1px solid var(--line)}
+.tab{flex:1 0 auto;border:none;background:transparent;color:var(--muted);padding:8px 12px;border-radius:10px;font:inherit;font-weight:600;white-space:nowrap}
+.tab.on{background:var(--th);color:var(--th-ink)}
+.tab .n{display:inline-block;min-width:20px;padding:0 6px;margin-left:4px;border-radius:99px;background:var(--warn);color:#4a2f00;font-size:13px}
 button{font:inherit;cursor:pointer}
-.btn{border:none;border-radius:12px;padding:10px 16px;font-weight:600;background:#2f5fa8;color:#fff}
+.btn{border:none;border-radius:12px;padding:10px 16px;font-weight:600;background:var(--btn);color:#fff}
 .btn.green{background:var(--ok);color:#1f3d03}
 .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.danger{background:var(--card);color:var(--bad-ink);border:1px solid var(--bad)}
+.btn.line{background:#06c755;color:#fff;text-decoration:none;display:inline-block}
+.btn.sm{padding:6px 12px;font-size:15px}
 :focus-visible{outline:3px solid #6aa0e8;outline-offset:2px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
-label.f{display:flex;flex-direction:column;gap:4px;font-size:15px;font-weight:600;color:var(--muted);flex:1;min-width:140px}
-input,select{font:inherit;font-size:17px;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
-.check{display:flex;gap:8px;align-items:center;font-size:15px;font-weight:500;color:var(--muted);margin-top:12px}
-.check input{width:22px;height:22px;flex:none}
+.center{text-align:center}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:15px;font-weight:600;color:var(--muted);flex:1;min-width:140px;text-align:center}
+input,select{font:inherit;font-size:17px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;text-align:center;text-align-last:center}
+input[type=checkbox]{width:24px;height:24px;flex:none;accent-color:#3d6b12}
+.check{display:flex;gap:10px;align-items:center;justify-content:center;font-size:16px;font-weight:500}
 .track{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:6px 0 6px}
 .cell{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;background:var(--future);color:var(--future-ink)}
 .cell.ok{background:var(--ok);color:#1f3d03}
@@ -79,34 +88,33 @@ input,select{font:inherit;font-size:17px;font-weight:600;color:var(--ink);backgr
 .cell.miss{background:var(--warn);color:#4a2f00}
 .cell.end{background:var(--bad);color:#fff}
 .cell.next{background:var(--card);border:2px dashed var(--navy);color:var(--ink)}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:600;color:var(--muted)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:14px;font-weight:600;color:var(--muted)}
 .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:var(--c)}
-.alert{border-radius:12px;padding:12px 14px;margin:12px 0 0;font-size:16px;background:var(--card);color:var(--ink)}
-.alert.ok{border-left:5px solid var(--ok)}
-.alert.warn{background:var(--warn-soft);color:var(--warn-ink);border-left:5px solid var(--warn)}
-.alert.bad{background:var(--bad-soft);color:var(--bad-ink);border-left:5px solid var(--bad)}
-.alert.done{border-left:5px solid var(--navy)}
+.alert{border-radius:12px;padding:12px 14px;margin:10px 0 0;font-size:16px;background:var(--card);color:var(--ink);border-left:5px solid var(--ok)}
+.alert.warn{background:var(--warn-soft);color:var(--warn-ink);border-left-color:var(--warn)}
+.alert.bad{background:var(--bad-soft);color:var(--bad-ink);border-left-color:var(--bad)}
+.alert.info{border-left-color:var(--btn)}
+.alerts .alert:first-child{margin-top:0}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--card);border-radius:14px;padding:12px}
+.stat{border-radius:14px;padding:12px;text-align:center;background:#e9eefb}
+.stats .stat:nth-child(1){background:#d6e8fd}.stats .stat:nth-child(2){background:#e3f3cf}.stats .stat:nth-child(3){background:#fff2d6}.stats .stat:nth-child(4){background:#e6f6f4}
 .stat b{display:block;font-size:23px;color:var(--ink)}
 .stat small{color:var(--muted);font-size:14px;font-weight:600}
-.stats .stat:nth-child(1){background:#d6e8fd}.stats .stat:nth-child(2){background:#e3f3cf}.stats .stat:nth-child(3){background:#fff2d6}.stats .stat:nth-child(4){background:#e6f6f4}
-.stat.hero{background:var(--hero)}.stat.hero b{color:var(--hero-ink)}.stat.hero small{color:var(--hero-sub)}
 .stat.s-warn b{color:var(--warn-ink)}.stat.s-bad b{color:var(--bad-ink)}
-h2{font-size:20px;font-weight:700;margin:0 0 8px;color:var(--ink)}
-.tbl{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
-table{border-collapse:collapse;width:100%;font-size:15px;min-width:680px}
-th{background:var(--th);color:var(--th-ink);font-weight:700;padding:10px 8px;text-align:right}
-th:first-child,td:first-child{text-align:center}
-td{padding:7px 8px;font-weight:500;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tbl{overflow-x:auto;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+table.wide{min-width:720px}
+th{background:var(--th);color:var(--th-ink);font-weight:700;padding:10px 8px;text-align:center}
+td{padding:7px 8px;font-weight:500;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
 tbody tr:nth-child(even) td{background:var(--zebra)}
-td input{width:120px;text-align:right;padding:7px 9px;background:var(--card)}
+td input{width:120px;padding:7px 9px}
 tbody tr.miss td{background:var(--warn-soft)}
 tbody tr.end td{background:var(--bad-soft)}
+tbody tr.prog td{background:#eaf2fd}
 tr.void td{opacity:.5}
 .tag{font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--future);color:var(--future-ink);display:inline-block}
-.tag.ok{background:var(--ok-soft);color:var(--ok-ink)}.tag.warn,.tag.miss{background:var(--warn-soft);color:var(--warn-ink)}.tag.bad,.tag.end{background:var(--bad-soft);color:var(--bad-ink)}.tag.done{background:var(--th);color:var(--th-ink)}
+.tag.ok{background:var(--ok-soft);color:var(--ok-ink)}.tag.warn{background:var(--warn-soft);color:var(--warn-ink)}.tag.bad{background:var(--bad-soft);color:var(--bad-ink)}.tag.done,.tag.prog{background:var(--th);color:var(--th-ink)}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:15px}
 @media(min-width:620px){.tiers{grid-template-columns:repeat(6,1fr)}}
 .tier{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center}
@@ -114,11 +122,24 @@ tr.void td{opacity:.5}
 .tier.on .muted{color:#5a3d00}
 .bar{height:12px;background:var(--card);border-radius:99px;overflow:hidden;margin:10px 0}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#f5c54d,#e0a91c)}
+.bar.pink i{background:linear-gradient(90deg,#f19ab9,#d4568a)}
 .ov{display:grid;gap:8px}
-.ovi{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px;border-radius:14px;background:var(--card);cursor:pointer;border:1px solid var(--line);width:100%;text-align:left;color:var(--ink)}
+.ovi{display:grid;gap:4px;padding:12px;border-radius:14px;background:var(--card);cursor:pointer;border:1px solid var(--line);width:100%;text-align:center;color:var(--ink)}
+.ovi.r3{border-left:6px solid var(--bad)}.ovi.r2{border-left:6px solid var(--warn)}.ovi.r1{border-left:6px solid #f2d27a}
 .muted{color:var(--muted);font-size:15px}
 .empty{text-align:center;padding:26px 10px}
-.toast{font-weight:600;font-size:16px;position:fixed;box-shadow:0 4px 12px rgba(0,0,0,.15);left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 16px;border-radius:999px;opacity:0;transition:opacity .25s;pointer-events:none}
+.sale{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 12px;background:var(--card);border-radius:12px;margin-bottom:6px;text-align:left}
+.sale .amt{font-weight:700;text-align:right}
+.sale .acts{grid-column:1/-1;display:flex;gap:6px;justify-content:flex-end}
+.mhead{display:flex;justify-content:space-between;margin:14px 2px 6px;font-weight:700;color:var(--h-sales)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid2 .full{grid-column:1/-1}
+.lic{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;background:var(--card);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.lic input[type=date]{max-width:190px}
+.modal{position:fixed;inset:0;background:rgba(20,30,60,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal .box{background:var(--card);border-radius:18px;padding:18px;max-width:460px;width:100%;text-align:center}
+.modal textarea{width:100%;height:220px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:10px;margin:10px 0}
+.toast{font-weight:600;font-size:16px;position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 16px;border-radius:999px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:60;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
@@ -129,206 +150,384 @@ tr.void td{opacity:.5}
   <p>คำนวณรายได้รับรองและติดตามเป้า FYC ปี 2026</p></div></div>
 </header>
 <main>
-  <div class="card sec-form">
-    <div class="agents" id="agents"></div>
-  </div>
+  <div class="card"><div class="agents" id="agents"></div></div>
   <div id="view"></div>
-  <div class="card sec-backup">
-    <h2>สำรองข้อมูล</h2>
-    <p class="muted" style="margin:0 0 10px">ข้อมูลบันทึกในเครื่องนี้อัตโนมัติ ควรสำรองเป็นไฟล์ไว้เป็นระยะ</p>
-    <div class="row">
-      <button class="btn green" id="exp">บันทึกไฟล์สำรอง</button>
-      <button class="btn ghost" id="imp">นำเข้าไฟล์สำรอง</button>
+  <div class="card sec-backup center">
+    <h2>สำรองและรวมข้อมูล</h2>
+    <p class="muted" style="margin:0 0 10px">ข้อมูลบันทึกในเครื่องนี้อัตโนมัติ ควรบันทึกไฟล์สำรองเป็นระยะ<br>UM รวมข้อมูลทีมได้ โดยให้ตัวแทนส่งไฟล์มาแล้วกดนำเข้า</p>
+    <div class="row" style="justify-content:center">
+      <button class="btn green" id="exp">บันทึกไฟล์สำรองทั้งหมด</button>
+      <button class="btn ghost" id="imp">นำเข้าไฟล์</button>
       <input type="file" id="file" accept=".json,application/json" hidden>
     </div>
   </div>
 </main>
 <div class="toast" id="toast"></div>
+<div id="modal"></div>
 
 <script>
 const PCT=[.25,.5,.75,1,1,1,1.25,1.25,1.25,1.25,1.25,1.25];
 const PLANS=[10000,12000,15000,20000,24000,36000,48000];
 const TIERS=[[100,3.5],[150,5],[200,7],[250,9],[300,10],[350,14]];
+const TM=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
 const KEY='spa-tracker-v1';
-const fmt=n=>Math.round(n).toLocaleString('th-TH');
 const $=s=>document.querySelector(s);
-
-let state={agents:[],sel:null};
-try{const s=localStorage.getItem(KEY);if(s)state=JSON.parse(s);}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
-function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800);}
+const fmt=n=>(Math.round((+n||0)*100)/100).toLocaleString('th-TH',{maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const pad=n=>String(n).padStart(2,'0');
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
+const curYM=()=>today().slice(0,7);
+const ymNum=ym=>{const [y,m]=ym.split('-').map(Number);return y*12+m-1;};
+const midx=(start,date)=>ymNum(date.slice(0,7))-ymNum(start);
+const mLabel=(start,i)=>{if(!start)return 'เดือน '+(i+1);const n=ymNum(start)+i;return TM[n%12]+' '+String(Math.floor(n/12)+543).slice(2);};
+const thDate=d=>{if(!d)return '';const [y,m,dd]=d.split('-').map(Number);return dd+' '+TM[m-1]+' '+String(y+543).slice(2);};
+const daysBetween=(a,b)=>Math.round((new Date(b)-new Date(a))/864e5);
 
-/* ===== คำนวณตามเงื่อนไขโครงการ ===== */
-function calc(a){
-  const P=+a.plan;let last=-1;
-  a.fyc.forEach((v,i)=>{if(v!==''&&v!=null)last=i;});
+/* ===== state ===== */
+let state={agents:[],sel:null,tab:'home',staleDays:14};
+try{const s=localStorage.getItem(KEY);if(s)state=Object.assign(state,JSON.parse(s));}catch(e){}
+function norm(a){
+  const lic=a.lic||{nonlife:{done:!!a.license,date:''},ic:{done:!!a.license,date:''}};
+  return{id:a.id||uid(),name:a.name||'',plan:+a.plan||12000,start:a.start||'',
+    fyc:(a.fyc||[]).concat(Array(12).fill('')).slice(0,12),
+    sales:(a.sales||[]).map(s=>({id:s.id||uid(),date:s.date||today(),client:s.client||'',product:s.product||'',premium:s.premium||'',fyc:+s.fyc||0})),
+    train:(a.train||[]).map(t=>({id:t.id||uid(),date:t.date||'',title:t.title||'',att:!!t.att})),lic};
+}
+state.agents=state.agents.map(norm);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1900);}
+
+/* ===== ช่องตัวเลข: แตะแล้วล้าง + ใส่ลูกน้ำระหว่างพิมพ์ ===== */
+const parseNum=v=>+(String(v).replace(/,/g,''))||0;
+function fmtTyping(v){v=String(v).replace(/[^\d.]/g,'');const p=v.split('.');let i=(p[0]||'').replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return p.length>1?i+'.'+p.slice(1).join('').slice(0,2):i;}
+function numInput(el,onCommit){
+  el.setAttribute('inputmode','decimal');el.setAttribute('autocomplete','off');
+  el.addEventListener('focus',()=>{el.dataset.old=el.value;el.value='';});
+  el.addEventListener('input',()=>{el.value=fmtTyping(el.value);});
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();el.blur();}});
+  el.addEventListener('blur',()=>{
+    if(el.value===''){el.value=el.dataset.old||'';return;}
+    if(onCommit){const key=el.dataset.key;onCommit(parseNum(el.value));
+      setTimeout(()=>{const nx=document.activeElement;},0);}
+  });
+}
+
+/* ===== คำนวณ ===== */
+function tIdx(a){return a.start?ymNum(curYM())-ymNum(a.start):null;}
+function monthData(a){
+  const out=Array.from({length:12},()=>({v:null,n:0,manual:false}));
+  if(a.start)a.sales.forEach(s=>{const i=midx(a.start,s.date);if(i>=0&&i<12){out[i].v=(out[i].v||0)+(+s.fyc||0);out[i].n++;}});
+  for(let i=0;i<12;i++)if(!out[i].n&&a.fyc[i]!==''&&a.fyc[i]!=null){out[i].v=+a.fyc[i];out[i].manual=true;}
+  return out;
+}
+function calc(a,sim){
+  const P=+a.plan,md=monthData(a);
+  if(sim)md[sim.idx].v=(md[sim.idx].v||0)+sim.amt;
+  const ti=tIdx(a);
+  let last=-1;md.forEach((x,i)=>{if(x.v!=null)last=i;});
+  let endIdx=ti==null?last:Math.max(Math.min(ti,11),last);
+  if(sim)endIdx=Math.max(endIdx,sim.idx);
+  const progIdx=(ti!=null&&ti>=0&&ti<=11&&ti===endIdx)?ti:-1;
   let cumT=0,cumF=0,earned=0,paid=0,pending=0,bp=0,miss=0,status='active',endM=null;
   const rows=[];
   for(let i=0;i<12;i++){
     const tgt=PCT[i]*P;cumT+=tgt;
-    if(i>last||status==='terminated'){rows.push({i,tgt,cumT,future:true,void:status==='terminated'});continue;}
-    const f=+a.fyc[i]||0;cumF+=f;
-    const ok=cumF>=cumT-0.001;let back=0,lost=false,gIn=0;
-    if(ok){
-      if(pending>0){if(bp<2){back=pending*P;bp++;}else lost=true;pending=0;}
-      gIn=P+back;earned+=gIn;miss=0;
-    }else{pending++;miss++;}
+    if(status==='terminated'||i>endIdx){rows.push({i,tgt,cumT,future:true,void:status==='terminated',md:md[i]});continue;}
+    const f=md[i].v||0;cumF+=f;
+    const ok=cumF>=cumT-0.001;let back=0,lost=false,prog=false;
+    if(ok){if(pending>0){if(bp<2){back=pending*P;bp++;}else lost=true;pending=0;}earned+=P+back;miss=0;}
+    else if(i===progIdx){prog=true;}
+    else{pending++;miss++;}
     const pay=Math.max(cumF,earned)-paid;paid+=pay;
     if(miss>=2){status='terminated';endM=i+1;}
-    rows.push({i,tgt,cumT,f,cumF,ok,gIn,back,lost,earned,pay,term:status==='terminated'&&endM===i+1});
+    rows.push({i,tgt,cumT,f,cumF,ok,back,lost,prog,earned,pay,md:md[i],term:status==='terminated'&&endM===i+1});
   }
-  const total12=12*P;
-  const pctFYC=cumF*100/total12;
+  const total12=12*P,pctFYC=cumF*100/total12;
   let tier=null;TIERS.forEach(t=>{if(pctFYC>=t[0])tier=t;});
   const nextTier=TIERS.find(t=>pctFYC<t[0]);
-  const completed=last===11&&status!=='terminated';
+  const completed=status!=='terminated'&&endIdx===11&&(ti==null||ti>11);
   if(completed)status='completed';
-  const bonus=tier?tier[1]*P:0;
-  const extra=tier&&a.license?2*P:0;
-  const mgr=status==='terminated'?Math.max(0,.5*(earned-cumF)):0;
-  const nextIdx=last+1;
-  let need=null;
-  if(status==='active'&&nextIdx<12){need=Math.max(0,rows[nextIdx].cumT-cumF);}
-  return{P,rows,last,cumF,earned,paid,status,endM,bp,miss,pctFYC,tier,nextTier,bonus,extra,completed,mgr,nextIdx,need,total12};
+  const licOK=a.lic.nonlife.done&&a.lic.ic.done;
+  const bonus=tier?tier[1]*P:0,extra=tier&&licOK?2*P:0;
+  const exposure=Math.max(0,.5*(earned-cumF));
+  // เดือนที่กำลังทำ
+  let cur=null,need=0,curF=0;
+  if(status==='active'){
+    if(progIdx>=0){cur=progIdx;}
+    else if(endIdx<11){cur=endIdx+1;}
+    if(cur!=null){const prevF=rows.slice(0,cur).reduce((s,r)=>s+(r.f||0),0);curF=cur===progIdx?(rows[cur].f||0):0;need=Math.max(0,rows[cur].cumT-prevF-curF);}
+  }
+  const curOK=cur!=null&&cur===progIdx&&rows[cur].ok;
+  return{P,rows,ti,endIdx,progIdx,cumF,earned,paid,status,endM,bp,miss,pctFYC,tier,nextTier,bonus,extra,licOK,completed,exposure,cur,need,curF,curOK,total12};
 }
 
+/* ===== แจ้งเตือน ===== */
+function alertsFor(a,r){
+  const out=[];
+  if(!a.start)out.push(['warn','ยังไม่ได้ตั้ง <b>เดือนเริ่มโครงการ</b> ไปที่แท็บ "ตั้งค่า" เพื่อให้นับยอดขายเข้าเดือนถูกต้อง']);
+  if(r.status==='terminated')out.push(['bad',`<b>สัญญาถูกยกเลิกเมื่อสิ้นเดือนที่ ${r.endM}</b> (FYC สะสมไม่ถึงเป้า 2 เดือนติดต่อกัน)<br>UM ชดเชย 50% × (${fmt(r.earned)} − ${fmt(r.cumF)}) = <b>${fmt(r.exposure)} บาท</b>`]);
+  if(r.status==='completed')out.push(['info',`<b>จบโครงการครบ 12 เดือน</b> FYC สะสม ${r.pctFYC.toFixed(2)}% ${r.tier?`ได้โบนัส ${r.tier[1]} เท่า`:'ยังไม่ถึง 100% จึงไม่ได้โบนัส'}`]);
+  if(r.status==='active'&&r.cur!=null){
+    const lbl=mLabel(a.start,r.cur);
+    const isNow=a.start&&r.cur===r.ti;
+    if(r.miss===1)out.push(['bad',`<b>ขาดเป้าเดือนที่แล้ว 1 เดือน</b> เดือนนี้ (${lbl}) ต้องทำ FYC อย่างน้อย <b>${fmt(r.need)} บาท</b> ไม่เช่นนั้นสัญญาจะถูกยกเลิก${2-r.bp>0?`<br>ถ้าทำได้ จะได้รับรายได้ย้อนหลัง (เหลือสิทธิ์ ${2-r.bp} ครั้ง)`:'<br>ใช้สิทธิ์รับย้อนหลังครบแล้ว'}`]);
+    if(r.curOK)out.push(['ok',`<b>${lbl} ผ่านเป้าสะสมแล้ว</b> ทำเพิ่มได้อีกเพื่อดันโบนัสพิเศษ`]);
+    else if(isNow){
+      const d=new Date(),dim=new Date(d.getFullYear(),d.getMonth()+1,0).getDate(),left=dim-d.getDate()+1;
+      const daily=r.need/left;
+      out.push([left<=7?'warn':'info',`<b>เป้า ${lbl}:</b> ยังขาด FYC <b>${fmt(r.need)} บาท</b> เหลือ ${left} วัน<br>ควรทำเฉลี่ยวันละ <b>${fmt(Math.ceil(daily))} บาท</b>${left<=7?' · ใกล้สิ้นเดือนแล้ว':''}`]);
+    }else if(r.miss!==1)out.push(['info',`${lbl} ต้องทำ FYC อย่างน้อย <b>${fmt(r.need)} บาท</b> เพื่อรักษาสัญญา`]);
+  }
+  if(r.status==='active'&&a.start&&r.ti>=0){
+    const ds=a.sales.map(s=>s.date).sort();const lastD=ds[ds.length-1];
+    const from=lastD||(a.start+'-01');const gap=daysBetween(from,today());
+    if(gap>=state.staleDays)out.push(['warn',`ไม่มีรายการขายมา <b>${gap} วัน</b>${lastD?` (ล่าสุด ${thDate(lastD)})`:''}`]);
+  }
+  if(a.train.length){const p=trainPct(a);if(p<80)out.push(['warn',`การเข้าอบรม <b>${p.toFixed(0)}%</b> ต่ำกว่าเกณฑ์ 80%`]);}
+  if(r.status!=='terminated'&&!r.licOK){
+    const pend=[['nonlife','ใบอนุญาตวินาศภัย'],['ic','ใบอนุญาตผู้แนะนำการลงทุน']].filter(([k])=>!a.lic[k].done);
+    const soon=pend.filter(([k])=>a.lic[k].date&&daysBetween(today(),a.lic[k].date)>=0&&daysBetween(today(),a.lic[k].date)<=14);
+    soon.forEach(([k,n])=>out.push(['info',`สอบ${n} ${thDate(a.lic[k].date)} (อีก ${daysBetween(today(),a.lic[k].date)} วัน)`]));
+    if(r.ti!=null&&r.ti>=9)out.push(['warn',`ยังขาด ${pend.map(p=>p[1]).join(' และ ')} ต้องได้ก่อนจบโครงการเพื่อรับโบนัสเพิ่ม 2 เท่า`]);
+  }
+  return out;
+}
+function trainPct(a){return a.train.length?a.train.filter(t=>t.att).length*100/a.train.length:100;}
+function risk(r,a){
+  if(r.status==='terminated')return -2;if(r.status==='completed')return -1;
+  if(r.miss===1&&!r.curOK)return 3;
+  if(r.cur!=null&&r.cur===r.ti&&!r.curOK){const d=new Date(),left=new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate()+1;return left<=7?2:1;}
+  return 0;
+}
 function statusInfo(r){
   if(r.status==='terminated')return{c:'var(--bad)',t:'ยกเลิกสัญญา',k:'bad'};
   if(r.status==='completed')return{c:'var(--navy)',t:'จบโครงการ',k:'done'};
-  if(r.miss===1)return{c:'var(--warn)',t:'เตือน: ขาดเป้า 1 เดือน',k:'warn'};
-  if(r.last<0)return{c:'var(--future-ink)',t:'ยังไม่บันทึกผลงาน',k:''};
+  if(r.miss===1&&!r.curOK)return{c:'var(--bad)',t:'เสี่ยงหลุด',k:'bad'};
+  if(r.cur!=null&&r.cur===r.ti&&!r.curOK)return{c:'var(--warn)',t:'ยังไม่ถึงเป้าเดือนนี้',k:'warn'};
+  if(r.endIdx<0)return{c:'var(--future-ink)',t:'ยังไม่มีผลงาน',k:''};
   return{c:'var(--ok)',t:'ผ่านเป้า',k:'ok'};
 }
 
-/* ===== UI ===== */
+/* ===== UI หลัก ===== */
+function newAgent(){const a=norm({name:'ตัวแทนใหม่',plan:12000,start:curYM()});state.agents.push(a);state.sel=a.id;state.tab='set';save();render();}
 function render(){
   const ag=$('#agents');ag.innerHTML='';
   const ov=document.createElement('button');ov.className='chip'+(state.sel===null?' on':'');ov.textContent='ภาพรวมทีม';
   ov.onclick=()=>{state.sel=null;save();render();};ag.appendChild(ov);
-  state.agents.forEach(a=>{
-    const r=calc(a),s=statusInfo(r);
+  state.agents.forEach(a=>{const r=calc(a),s=statusInfo(r);
     const b=document.createElement('button');b.className='chip'+(state.sel===a.id?' on':'');
     b.innerHTML=`<span class="dot" style="background:${s.c}"></span>`;b.append(a.name||'ไม่มีชื่อ');
-    b.onclick=()=>{state.sel=a.id;save();render();};ag.appendChild(b);
-  });
-  const add=document.createElement('button');add.className='chip add';add.textContent='+ เพิ่มตัวแทน';
-  add.onclick=()=>{const a={id:uid(),name:'ตัวแทนใหม่',plan:12000,license:true,fyc:Array(12).fill('')};state.agents.push(a);state.sel=a.id;save();render();setTimeout(()=>$('#nm')?.select(),50);};
-  ag.appendChild(add);
+    b.onclick=()=>{state.sel=a.id;state.tab='home';save();render();};ag.appendChild(b);});
+  const add=document.createElement('button');add.className='chip add';add.textContent='+ เพิ่มตัวแทน';add.onclick=newAgent;ag.appendChild(add);
   const a=state.agents.find(x=>x.id===state.sel);
   a?renderAgent(a):renderOverview();
 }
 
 function renderOverview(){
   const v=$('#view');
-  if(!state.agents.length){v.innerHTML=`<div class="card empty"><h2>เริ่มจากเพิ่มตัวแทนคนแรก</h2><p class="muted">ใส่ชื่อ เลือกแผนรับรองรายได้ แล้วกรอก FYC ทีละเดือน แอปจะคำนวณรายได้และเตือนสถานะสัญญาให้</p><button class="btn green" onclick="document.querySelector('.chip.add').click()">+ เพิ่มตัวแทน</button></div>`;return;}
-  let tot=0,warn=0,term=0;
-  const items=state.agents.map(a=>{const r=calc(a),s=statusInfo(r);tot+=r.paid;if(r.miss===1&&r.status==='active')warn++;if(r.status==='terminated')term++;
-    const nx=r.need!=null?`เดือน ${r.nextIdx+1} ต้องทำ FYC อีก ${fmt(r.need)}`:(r.status==='completed'?`โบนัส ${fmt(r.bonus+r.extra)}`:'');
-    return`<button class="ovi" data-id="${a.id}"><span><b>${esc(a.name)}</b><br><span class="muted">แผน ${fmt(r.P)} · ${nx}</span></span><span style="text-align:right"><span class="tag ${s.k}">${s.t}</span><br><span class="muted">รับแล้ว ${fmt(r.paid)}</span></span></button>`;}).join('');
-  v.innerHTML=`<div class="card sec-stat"><h2>ภาพรวมทีม</h2><div class="stats" style="margin-bottom:10px">
-    <div class="stat hero"><small>ตัวแทนทั้งหมด</small><b>${state.agents.length} คน</b></div>
-    <div class="stat s-warn"><small>ต้องเฝ้าระวัง</small><b>${warn} คน</b></div>
-    <div class="stat s-bad"><small>ยกเลิกสัญญา</small><b>${term} คน</b></div>
-    <div class="stat"><small>รายได้รวมที่จ่ายแล้ว</small><b>${fmt(tot)}</b></div></div>
-    <div class="ov">${items}</div></div>`;
-  v.querySelectorAll('.ovi').forEach(b=>b.onclick=()=>{state.sel=b.dataset.id;save();render();});
+  if(!state.agents.length){v.innerHTML=`<div class="card empty"><h2 style="color:var(--navy)">เริ่มจากเพิ่มตัวแทนคนแรก</h2><p class="muted">ใส่ชื่อ แผนรับรองรายได้ และเดือนเริ่มโครงการ แล้วบันทึกการขายทีละรายการ แอปจะคำนวณรายได้และเตือนสถานะสัญญาให้</p><button class="btn green" id="first">+ เพิ่มตัวแทน</button></div>`;$('#first').onclick=newAgent;return;}
+  const list=state.agents.map(a=>({a,r:calc(a)})).map(o=>({...o,risk:risk(o.r,o.a)})).sort((x,y)=>y.risk-x.risk);
+  let warn=0,term=0,exp=0,monthF=0;
+  list.forEach(({r,risk:k})=>{if(k>=2)warn++;if(r.status==='terminated')term++;if(r.status==='active')exp+=r.exposure;monthF+=r.curF;});
+  const items=list.map(({a,r,risk:k})=>{const s=statusInfo(r);
+    const line=r.status==='active'&&r.cur!=null?`${mLabel(a.start,r.cur)} · FYC ${fmt(r.curF)} · ${r.curOK?'ผ่านเป้าแล้ว':'ขาดอีก '+fmt(r.need)}`:(r.status==='completed'?`โบนัส ${fmt(r.bonus+r.extra)} บาท`:(r.status==='terminated'?`UM ชดเชย ${fmt(r.exposure)} บาท`:''));
+    return`<button class="ovi r${Math.max(0,k)}" data-id="${a.id}"><b>${esc(a.name)} <span class="tag ${s.k}">${s.t}</span></b><span class="muted">แผน ${fmt(r.P)} · ${line}</span><span class="muted">รับแล้ว ${fmt(r.paid)} · FYC สะสม ${fmt(r.cumF)}${r.status==='active'?` · ยอดเสี่ยงชดเชย ${fmt(r.exposure)}`:''}</span></button>`;}).join('');
+  v.innerHTML=`<div class="card sec-stat center"><h2>ภาพรวมทีม</h2><div class="stats" style="margin-bottom:12px">
+    <div class="stat"><small>ตัวแทนทั้งหมด</small><b>${state.agents.length} คน</b></div>
+    <div class="stat s-warn"><small>ต้องเร่งติดตาม</small><b>${warn} คน</b></div>
+    <div class="stat"><small>FYC ทีมเดือนนี้</small><b>${fmt(monthF)}</b></div>
+    <div class="stat s-bad"><small>ยอดเสี่ยงชดเชยของ UM</small><b>${fmt(exp)}</b></div></div>
+    <p class="muted" style="margin:0 0 10px">เรียงคนที่ต้องติดตามมากที่สุดไว้บนสุด · ยกเลิกสัญญาแล้ว ${term} คน</p>
+    <div class="ov">${items}</div>
+    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn line" id="sumTeam">สรุปทีมส่ง LINE</button></div>
+    <div class="row" style="justify-content:center;margin-top:14px;align-items:center"><span class="muted">เตือนเมื่อไม่มีรายการขายเกิน</span><input id="stale" style="width:80px" value="${state.staleDays}"><span class="muted">วัน</span></div>
+  </div>`;
+  v.querySelectorAll('.ovi').forEach(b=>b.onclick=()=>{state.sel=b.dataset.id;state.tab='home';save();render();});
+  numInput($('#stale'),n=>{state.staleDays=Math.max(1,Math.round(n))||14;save();render();});
+  $('#sumTeam').onclick=()=>shareText(teamSummary(list));
 }
 
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
+const TABS=[['home','ภาพรวม'],['sales','บันทึกการขาย'],['table','ตาราง 12 เดือน'],['bonus','โบนัส'],['train','อบรม & ใบอนุญาต'],['set','ตั้งค่า']];
 function renderAgent(a){
+  const r=calc(a),al=alertsFor(a,r);
+  const warnN=al.filter(x=>x[0]!=='ok'&&x[0]!=='info').length;
   const v=$('#view');
-  v.innerHTML=`<div class="card sec-form">
-    <div class="row">
-      <label class="f">ชื่อตัวแทน<input id="nm" value="${esc(a.name)}"></label>
-      <label class="f">แผนรับรองรายได้ (บาท/เดือน)<select id="pl">${PLANS.map(p=>`<option value="${p}" ${+a.plan===p?'selected':''}>${fmt(p)}</option>`).join('')}</select></label>
-    </div>
-    <label class="check"><input type="checkbox" id="lic" ${a.license?'checked':''}> มีใบอนุญาตวินาศภัย + ผู้แนะนำการลงทุนเมื่อจบโครงการ (รับเพิ่ม 2 เท่าของแผน)</label>
-  </div>
-  <div id="out"></div>`;
-  $('#nm').oninput=e=>{a.name=e.target.value;save();clearTimeout(renderAgent.t);renderAgent.t=setTimeout(()=>{const keep=document.activeElement.id;renderChipsOnly();},300);};
-  $('#pl').onchange=e=>{a.plan=+e.target.value;save();renderOut(a);renderChipsOnly();};
-  $('#lic').onchange=e=>{a.license=e.target.checked;save();renderOut(a);};
-  renderOut(a);
+  v.innerHTML=`<div class="tabs">${TABS.map(([k,t])=>`<button class="tab ${state.tab===k?'on':''}" data-t="${k}">${t}${k==='home'&&warnN?`<span class="n">${warnN}</span>`:''}</button>`).join('')}</div><div id="tc"></div>`;
+  v.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{state.tab=b.dataset.t;save();renderAgent(a);});
+  ({home:tabHome,sales:tabSales,table:tabTable,bonus:tabBonus,train:tabTrain,set:tabSet}[state.tab]||tabHome)(a,r,al);
 }
-function renderChipsOnly(){
-  // refresh chip names/dots without rebuilding the form
-  const a=state.agents.find(x=>x.id===state.sel);const chips=[...document.querySelectorAll('#agents .chip')];
-  state.agents.forEach((ag,i)=>{const c=chips[i+1];if(!c)return;const r=calc(ag),s=statusInfo(r);c.innerHTML=`<span class="dot" style="background:${s.c}"></span>`;c.append(ag.name||'ไม่มีชื่อ');});
+function refresh(a){renderChips();renderAgent(a);}
+function renderChips(){const chips=[...document.querySelectorAll('#agents .chip')];state.agents.forEach((ag,i)=>{const c=chips[i+1];if(!c)return;const s=statusInfo(calc(ag));c.innerHTML=`<span class="dot" style="background:${s.c}"></span>`;c.append(ag.name||'ไม่มีชื่อ');});}
+
+function trackHtml(a,r){
+  const cells=r.rows.map((x,i)=>{let c='';if(!x.future)c=x.term?'end':x.prog?'next':(x.ok?(x.back?'back':'ok'):'miss');else if(r.status==='active'&&i===r.cur)c='next';return`<div class="cell ${c}" title="${mLabel(a.start,i)}">${i+1}</div>`;}).join('');
+  return`<div class="track">${cells}</div><div class="legend"><span style="--c:var(--ok)">ผ่านเป้า</span><span style="--c:var(--warn)">ขาดเป้า</span><span style="--c:var(--bad)">ยกเลิก</span><span style="--c:var(--future)">ยังไม่ถึง</span></div>`;
 }
 
-function renderOut(a){
-  const r=calc(a),o=$('#out');
-  const cells=r.rows.map((x,i)=>{let c='';if(!x.future)c=x.term?'end':(x.ok?(x.back?'back':'ok'):'miss');else if(r.status==='active'&&i===r.nextIdx)c='next';return`<div class="cell ${c}" title="เดือน ${i+1}">${i+1}</div>`;}).join('');
-  let alert='';
-  if(r.status==='terminated')alert=`<div class="alert bad"><b>สัญญาถูกยกเลิกเมื่อสิ้นเดือน ${r.endM}</b> เพราะ FYC สะสมไม่ถึงเป้า 2 เดือนติดต่อกัน<br>ผู้บริหารชดเชย 50% × (แผนรับรองสะสม ${fmt(r.earned)} − FYC สะสม ${fmt(r.cumF)}) = <b>${fmt(r.mgr)} บาท</b></div>`;
-  else if(r.status==='completed')alert=`<div class="alert done"><b>จบโครงการครบ 12 เดือน</b> FYC สะสม ${r.pctFYC.toFixed(2)}% ของแผนทั้งปี ${r.tier?`ได้โบนัสพิเศษ ${r.tier[1]} เท่า`:'ยังไม่ถึง 100% จึงไม่ได้โบนัสพิเศษ'}</div>`;
-  else if(r.last<0)alert=`<div class="alert ok">กรอก FYC เดือนที่ 1 ในตารางด้านล่างเพื่อเริ่มคำนวณ เป้าเดือนแรก ${fmt(r.rows[0].cumT)} บาท</div>`;
-  else if(r.miss===1){const left=2-r.bp;alert=`<div class="alert warn"><b>เดือน ${r.last+1} FYC สะสมไม่ถึงเป้า</b> ยังไม่ได้รายได้รับรองของเดือนนี้<br>เดือน ${r.nextIdx+1} ต้องทำ FYC อย่างน้อย <b>${fmt(r.need)} บาท</b> (สะสมให้ถึง ${fmt(r.rows[r.nextIdx].cumT)}) ไม่เช่นนั้นสัญญาจะถูกยกเลิก<br>${left>0?`ถ้าทำได้ จะได้รับรายได้ย้อนหลัง (เหลือสิทธิ์ ${left} ครั้ง)`:'ใช้สิทธิ์รับย้อนหลังครบ 2 ครั้งแล้ว จะไม่ได้รับเดือนที่ขาดคืน'}</div>`;}
-  else alert=`<div class="alert ok">ผ่านเป้าสะสมแล้ว · เดือน ${r.nextIdx+1} ต้องทำ FYC อย่างน้อย <b>${fmt(r.need)} บาท</b> เพื่อรักษาสัญญา · สิทธิ์รับย้อนหลังเหลือ ${2-r.bp} ครั้ง</div>`;
-
-  const tbl=r.rows.map(x=>{
-    const i=x.i,val=a.fyc[i]??'';
-    if(x.future){const dis=x.void?'disabled':'';return`<tr class="${x.void?'void':''}"><td>${i+1}</td><td>${PCT[i]*100}%</td><td>${fmt(x.cumT)}</td><td><input inputmode="numeric" data-m="${i}" value="${val}" ${dis} placeholder="—"></td><td>—</td><td>—</td><td>—</td><td><span class="tag">${x.void?'ยกเลิกแล้ว':'ยังไม่ถึง'}</span></td></tr>`;}
-    const tag=x.term?'<span class="tag end">ยกเลิก</span>':x.ok?`<span class="tag ok">${x.back?'ผ่าน+ย้อนหลัง':'ผ่าน'}</span>`:`<span class="tag miss">ขาดเป้า${x.lost?'':''}</span>`;
-    return`<tr class="${x.term?'end':(!x.ok?'miss':'')}"><td>${i+1}</td><td>${PCT[i]*100}%</td><td>${fmt(x.cumT)}</td><td><input inputmode="numeric" data-m="${i}" value="${val}"></td><td>${fmt(x.cumF)}</td><td>${fmt(x.earned)}</td><td><b>${fmt(x.pay)}</b></td><td>${tag}</td></tr>`;}).join('');
-
-  const pct=Math.min(100,r.pctFYC/350*100);
-  const tierHtml=TIERS.map(t=>`<div class="tier ${r.tier&&r.tier[0]===t[0]?'on':''}">${t[0]}%+<br><b>${t[1]} เท่า</b><br><span class="muted">${fmt(t[1]*r.P)}</span></div>`).join('');
-  const gap=r.nextTier?`ทำ FYC เพิ่มอีก ${fmt(r.nextTier[0]/100*r.total12-r.cumF)} บาท เพื่อขึ้นขั้น ${r.nextTier[1]} เท่า (${r.nextTier[0]}%)`:'ถึงขั้นสูงสุดแล้ว';
+function tabHome(a,r,al){
   const grand=r.paid+(r.status==='terminated'?0:r.bonus+r.extra);
-
-  o.innerHTML=`<div class="card sec-track">
-    <h2>เส้นทาง 12 เดือน</h2>
-    <div class="track">${cells}</div>
-    <div class="legend"><span style="--c:var(--ok)">ผ่านเป้า</span><span style="--c:var(--warn)">ขาดเป้า</span><span style="--c:var(--bad)">ยกเลิก</span><span style="--c:var(--future)">ยังไม่ถึง</span></div>
-    ${alert}
-  </div>
-  <div class="card sec-stat"><h2>สรุปรายได้</h2><div class="stats">
-    <div class="stat hero"><small>${r.status==='terminated'?'รายได้รวมที่ได้รับ':(r.completed?'รวมทั้งโครงการ':'คาดการณ์รวม (ถ้าจบตอนนี้)')}</small><b>${fmt(grand)}</b></div>
+  $('#tc').innerHTML=`<div class="card sec-track center"><h2>${esc(a.name)} · ${a.start?'เริ่ม '+mLabel(a.start,0):'ยังไม่ตั้งเดือนเริ่ม'}</h2>${trackHtml(a,r)}</div>
+  <div class="card alerts">${al.length?al.map(([k,t])=>`<div class="alert ${k}">${t}</div>`).join(''):'<div class="alert">ไม่มีเรื่องต้องเตือน</div>'}</div>
+  <div class="card sec-stat center"><h2>สรุปรายได้</h2><div class="stats">
+    <div class="stat"><small>${r.status==='terminated'?'รายได้รวมที่ได้รับ':(r.completed?'รวมทั้งโครงการ':'คาดการณ์รวม (ถ้าจบตอนนี้)')}</small><b>${fmt(grand)}</b></div>
     <div class="stat"><small>รับแล้วรายเดือน</small><b>${fmt(r.paid)}</b></div>
     <div class="stat"><small>FYC สะสม</small><b>${fmt(r.cumF)}</b></div>
-    <div class="stat"><small>แผนรับรองสะสม</small><b>${fmt(r.earned)}</b></div>
-  </div></div>
-  <div class="card sec-table"><h2>ผลงานรายเดือน</h2><p class="muted" style="margin:0 0 8px">กรอก FYC ที่ทำได้ในแต่ละเดือน รายได้ = ค่าที่มากกว่าระหว่าง FYC สะสมกับแผนรับรองสะสม หักที่รับไปแล้ว</p>
-    <div class="tbl"><table><thead><tr><th>เดือน</th><th>%</th><th>เป้าสะสม</th><th>FYC เดือนนี้</th><th>FYC สะสม</th><th>แผนรับรองสะสม</th><th>รับเดือนนี้</th><th>สถานะ</th></tr></thead><tbody>${tbl}</tbody></table></div>
+    <div class="stat"><small>แผนรับรองสะสม</small><b>${fmt(r.earned)}</b></div></div></div>
+  ${r.status==='active'&&r.cur!=null?`<div class="card sec-sim center"><h2>ลองคำนวณก่อนขาย</h2>
+    <p class="muted" style="margin:0 0 8px">ถ้า ${mLabel(a.start,r.cur)} ทำ FYC เพิ่มอีก</p>
+    <input id="simv" placeholder="ใส่ยอด FYC" style="max-width:240px"><div id="simo"></div></div>`:''}
+  <div class="row" style="justify-content:center;margin-bottom:14px"><button class="btn line" id="sumOne">สรุปส่ง LINE</button><button class="btn ghost" id="expOne">ส่งไฟล์ของคนนี้ให้ UM</button></div>`;
+  $('#sumOne').onclick=()=>shareText(agentSummary(a,r));
+  $('#expOne').onclick=()=>exportData([a],'spa-'+(a.name||'agent'));
+  const si=$('#simv');if(si){numInput(si,amt=>simShow(a,r,amt));}
+}
+function simShow(a,r,amt){
+  const s=calc(a,{idx:r.cur,amt});const row=s.rows[r.cur];const base=r.rows[r.cur];
+  const nowPay=base.future?0:(base.pay||0);
+  const gB=r.paid+r.bonus+r.extra,gA=s.paid+s.bonus+s.extra;
+  $('#simo').innerHTML=`<div class="alert info" style="text-align:center">FYC เพิ่ม <b>${fmt(amt)}</b> → ${row.ok?'<b>ผ่านเป้าสะสม</b>':'<b>ยังไม่ถึงเป้าสะสม</b> ขาดอีก '+fmt(row.cumT-row.cumF)}<br>
+  รายได้ ${mLabel(a.start,r.cur)}: ${fmt(nowPay)} → <b>${fmt(row.pay||0)} บาท</b><br>
+  FYC สะสม ${s.pctFYC.toFixed(1)}% → โบนัส ${s.tier?s.tier[1]+' เท่า':'ยังไม่ถึงขั้น'}<br>
+  คาดการณ์รวมทั้งโครงการ ${fmt(gB)} → <b>${fmt(gA)} บาท</b></div>`;
+}
+
+let editSale=null;
+function tabSales(a,r){
+  const e=editSale&&a.sales.find(s=>s.id===editSale);
+  const groups={};a.sales.slice().sort((x,y)=>y.date.localeCompare(x.date)).forEach(s=>{const k=s.date.slice(0,7);(groups[k]=groups[k]||[]).push(s);});
+  const list=Object.keys(groups).map(k=>{const sum=groups[k].reduce((t,s)=>t+(+s.fyc||0),0);const i=a.start?midx(a.start,k+'-01'):null;
+    const tag=i==null?'':(i<0||i>11?' <span class="tag warn">นอกช่วงโครงการ</span>':` · เดือนที่ ${i+1}`);
+    return`<div class="mhead"><span>${TM[+k.slice(5)-1]} ${+k.slice(0,4)+543}${tag}</span><span>FYC ${fmt(sum)}</span></div>`+groups[k].map(s=>`<div class="sale"><div><b>${esc(s.client)||'ไม่ระบุชื่อ'}</b><br><span class="muted">${thDate(s.date)}${s.product?' · '+esc(s.product):''}${s.premium?' · เบี้ย '+fmt(s.premium):''}</span></div><div class="amt">${fmt(s.fyc)}</div><div class="acts"><button class="btn ghost sm" data-ed="${s.id}">แก้ไข</button><button class="btn danger sm" data-del="${s.id}">ลบ</button></div></div>`).join('');}).join('');
+  $('#tc').innerHTML=`<div class="card sec-sales center"><h2>${e?'แก้ไขรายการขาย':'บันทึกการขาย'}</h2>
+    <div class="grid2">
+      <label class="f">วันที่ขาย<input type="date" id="sd" value="${e?e.date:today()}"></label>
+      <label class="f">ชื่อลูกค้า<input id="sc" value="${e?esc(e.client):''}"></label>
+      <label class="f full">แบบประกัน<input id="sp" value="${e?esc(e.product):''}" list="prods"></label>
+      <label class="f">เบี้ยประกัน<input id="spr" value="${e&&e.premium?fmtTyping(e.premium):''}"></label>
+      <label class="f">FYC (ค่าคอมปีแรก)<input id="sf" value="${e?fmtTyping(e.fyc):''}"></label>
+    </div>
+    <datalist id="prods">${[...new Set(a.sales.map(s=>s.product).filter(Boolean))].map(p=>`<option value="${esc(p)}">`).join('')}</datalist>
+    <div class="row" style="justify-content:center;margin-top:12px"><button class="btn green" id="sadd">${e?'บันทึกการแก้ไข':'+ เพิ่มรายการขาย'}</button>${e?'<button class="btn ghost" id="scan">ยกเลิก</button>':''}</div>
+    ${a.start?'':'<div class="alert warn">ยังไม่ได้ตั้งเดือนเริ่มโครงการ ยอดขายจะยังไม่ถูกนับเข้าตาราง</div>'}
   </div>
-  <div class="card sec-bonus"><h2>โบนัสพิเศษเมื่อจบโครงการ</h2>
+  <div class="card sec-sales">${list||'<p class="muted center">ยังไม่มีรายการขาย เริ่มเพิ่มรายการแรกด้านบน</p>'}</div>`;
+  numInput($('#spr'));numInput($('#sf'));
+  $('#sadd').onclick=()=>{
+    const d=$('#sd').value,f=parseNum($('#sf').value);
+    if(!d){toast('ใส่วันที่ขาย');return;}if(!f){toast('ใส่ยอด FYC');return;}
+    const o={date:d,client:$('#sc').value.trim(),product:$('#sp').value.trim(),premium:parseNum($('#spr').value)||'',fyc:f};
+    if(e)Object.assign(e,o);else a.sales.push({id:uid(),...o});
+    editSale=null;save();refresh(a);toast(e?'บันทึกการแก้ไขแล้ว':'เพิ่มรายการขายแล้ว');};
+  if(e)$('#scan').onclick=()=>{editSale=null;refresh(a);};
+  $('#tc').querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{editSale=b.dataset.ed;refresh(a);window.scrollTo({top:0});});
+  $('#tc').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(confirm('ลบรายการนี้?')){a.sales=a.sales.filter(s=>s.id!==b.dataset.del);save();refresh(a);}});
+}
+
+function tabTable(a,r){
+  const rows=r.rows.map(x=>{const i=x.i;const md=x.md;
+    const inp=md.n?`<b>${fmt(md.v)}</b><br><span class="muted" style="font-size:13px">${md.n} รายการ</span>`:`<input data-m="${i}" value="${a.fyc[i]!==''&&a.fyc[i]!=null?fmtTyping(a.fyc[i]):''}" placeholder="—" ${x.void?'disabled':''}>`;
+    if(x.future)return`<tr class="${x.void?'void':''}"><td>${i+1}<br><span class="muted" style="font-size:13px">${mLabel(a.start,i)}</span></td><td>${PCT[i]*100}%</td><td>${fmt(x.cumT)}</td><td>${inp}</td><td>—</td><td>—</td><td>—</td><td><span class="tag">${x.void?'ยกเลิกแล้ว':'ยังไม่ถึง'}</span></td></tr>`;
+    const tag=x.term?'<span class="tag bad">ยกเลิก</span>':x.prog?'<span class="tag prog">กำลังทำ</span>':x.ok?`<span class="tag ok">${x.back?'ผ่าน+ย้อนหลัง':'ผ่าน'}</span>`:'<span class="tag warn">ขาดเป้า</span>';
+    return`<tr class="${x.term?'end':x.prog?'prog':(!x.ok?'miss':'')}"><td>${i+1}<br><span class="muted" style="font-size:13px">${mLabel(a.start,i)}</span></td><td>${PCT[i]*100}%</td><td>${fmt(x.cumT)}</td><td>${inp}</td><td>${fmt(x.cumF)}</td><td>${fmt(x.earned)}</td><td><b>${fmt(x.pay)}</b></td><td>${tag}</td></tr>`;}).join('');
+  $('#tc').innerHTML=`<div class="card sec-track center"><h2>เส้นทาง 12 เดือน</h2>${trackHtml(a,r)}</div>
+  <div class="card sec-table center"><h2>ผลงานรายเดือน</h2><p class="muted" style="margin:0 0 8px">เดือนที่มีรายการขาย FYC จะรวมให้อัตโนมัติ เดือนที่ไม่มีรายการกรอกยอดรวมเองได้<br>รายได้ = ค่าที่มากกว่าระหว่าง FYC สะสมกับแผนรับรองสะสม หักที่รับไปแล้ว</p>
+  <div class="tbl"><table class="wide"><thead><tr><th>เดือน</th><th>%</th><th>เป้าสะสม</th><th>FYC เดือนนี้</th><th>FYC สะสม</th><th>แผนรับรองสะสม</th><th>รับเดือนนี้</th><th>สถานะ</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  $('#tc').querySelectorAll('input[data-m]').forEach(inp=>numInput(inp,n=>{a.fyc[+inp.dataset.m]=n;save();
+    const m=+inp.dataset.m;setTimeout(()=>{const ae=document.activeElement;const k=ae&&ae.dataset?ae.dataset.m:null;refresh(a);if(k!=null){const ni=document.querySelector(`input[data-m="${k}"]`);if(ni)ni.focus();}},0);}));
+}
+
+function tabBonus(a,r){
+  const pct=Math.min(100,r.pctFYC/350*100);
+  const tierHtml=TIERS.map(t=>`<div class="tier ${r.tier&&r.tier[0]===t[0]?'on':''}">${t[0]}%+<br><b>${t[1]} เท่า</b><br><span class="muted">${fmt(t[1]*r.P)}</span></div>`).join('');
+  const gap=r.nextTier?`ทำ FYC เพิ่มอีก <b>${fmt(r.nextTier[0]/100*r.total12-r.cumF)} บาท</b> เพื่อขึ้นขั้น ${r.nextTier[1]} เท่า (${r.nextTier[0]}%)`:'ถึงขั้นสูงสุดแล้ว';
+  $('#tc').innerHTML=`<div class="card sec-bonus center"><h2>โบนัสพิเศษเมื่อจบโครงการ</h2>
     <div class="muted">FYC สะสม ${fmt(r.cumF)} ÷ แผนทั้งปี ${fmt(r.total12)} = <b style="color:var(--ink)">${r.pctFYC.toFixed(2)}%</b></div>
     <div class="bar"><i style="width:${pct}%"></i></div>
     <div class="tiers">${tierHtml}</div>
-    <div class="alert ok">${r.status==='terminated'?'ถูกยกเลิกสัญญา ไม่มีสิทธิ์รับโบนัสพิเศษ':`โบนัส ${fmt(r.bonus)} + เพิ่ม 2 เท่า ${fmt(r.extra)} = <b>${fmt(r.bonus+r.extra)} บาท</b>${r.completed?'':' (ประมาณการ จ่ายเมื่อจบเดือน 12)'}<br>${gap}`}</div>
-  </div>
-  <div class="row" style="justify-content:space-between;margin-bottom:14px">
-    <button class="btn ghost" id="clr">ล้างผลงานทั้งหมด</button>
-    <button class="btn danger" id="del">ลบตัวแทนนี้</button>
-  </div>`;
-  o.querySelectorAll('input[data-m]').forEach(inp=>{
-    inp.onchange=e=>{const m=+e.target.dataset.m;const t=e.target.value.replace(/[^\d.]/g,'');a.fyc[m]=t;save();renderOut(a);renderChipsOnly();
-      const nx=document.querySelector(`input[data-m="${m+1}"]`);if(nx&&!nx.disabled)nx.focus();};
-  });
-  $('#clr').onclick=()=>{if(confirm('ล้าง FYC ทุกเดือนของ '+a.name+'?')){a.fyc=Array(12).fill('');save();renderOut(a);renderChipsOnly();}};
-  $('#del').onclick=()=>{if(confirm('ลบ '+a.name+' ออกจากแอป?')){state.agents=state.agents.filter(x=>x.id!==a.id);state.sel=null;save();render();}};
+    <div class="alert info">${r.status==='terminated'?'ถูกยกเลิกสัญญา ไม่มีสิทธิ์รับโบนัสพิเศษ':`โบนัส ${fmt(r.bonus)} + เพิ่ม 2 เท่า ${fmt(r.extra)} = <b>${fmt(r.bonus+r.extra)} บาท</b>${r.completed?'':' (ประมาณการ จ่ายเมื่อจบเดือนที่ 12)'}<br>${gap}${r.licOK?'':'<br>ยังไม่ได้ใบอนุญาตครบ จึงยังไม่นับโบนัสเพิ่ม 2 เท่า'}`}</div></div>`;
 }
 
-/* ===== สำรองข้อมูล ===== */
+function tabTrain(a,r){
+  const p=trainPct(a);
+  const list=a.train.slice().sort((x,y)=>(y.date||'').localeCompare(x.date||'')).map(t=>`<div class="sale"><label class="check" style="justify-content:flex-start"><input type="checkbox" data-att="${t.id}" ${t.att?'checked':''}><span><b>${esc(t.title)||'การอบรม'}</b><br><span class="muted">${thDate(t.date)}</span></span></label><button class="btn danger sm" data-tdel="${t.id}">ลบ</button></div>`).join('');
+  const L=(k,n)=>`<div class="lic"><input type="checkbox" data-lic="${k}" ${a.lic[k].done?'checked':''}><div style="text-align:left"><b>${n}</b><div class="row" style="align-items:center;margin-top:4px"><span class="muted">วันสอบ</span><input type="date" data-lexam="${k}" value="${a.lic[k].date||''}"></div></div></div>`;
+  $('#tc').innerHTML=`<div class="card sec-train center"><h2>ใบอนุญาต</h2><p class="muted" style="margin:0 0 8px">ต้องได้ครบทั้ง 2 ใบเมื่อจบโครงการ จึงได้โบนัสเพิ่ม 2 เท่า</p>
+    ${L('nonlife','ใบอนุญาตตัวแทนวินาศภัย')}${L('ic','ใบอนุญาตผู้แนะนำการลงทุน')}</div>
+  <div class="card sec-train center"><h2>การเข้าอบรม</h2>
+    <div class="muted">เข้าแล้ว ${a.train.filter(t=>t.att).length} จาก ${a.train.length} ครั้ง = <b style="color:${p<80?'var(--bad-ink)':'var(--ok-ink)'}">${p.toFixed(0)}%</b> (เกณฑ์ 80%)</div>
+    <div class="bar pink"><i style="width:${p}%"></i></div>
+    <div class="grid2"><label class="f">วันที่<input type="date" id="td" value="${today()}"></label><label class="f">หัวข้อ<input id="tt" placeholder="เช่น อบรมแบบประกัน"></label></div>
+    <div class="row" style="justify-content:center;margin:10px 0"><button class="btn green" id="tadd">+ เพิ่มการอบรม (เข้าแล้ว)</button><button class="btn ghost" id="tadd2">+ เพิ่ม (ขาด)</button></div>
+    ${list||'<p class="muted">ยังไม่มีรายการอบรม</p>'}</div>`;
+  const addT=att=>{a.train.push({id:uid(),date:$('#td').value,title:$('#tt').value.trim(),att});save();refresh(a);};
+  $('#tadd').onclick=()=>addT(true);$('#tadd2').onclick=()=>addT(false);
+  $('#tc').querySelectorAll('[data-att]').forEach(c=>c.onchange=()=>{a.train.find(t=>t.id===c.dataset.att).att=c.checked;save();refresh(a);});
+  $('#tc').querySelectorAll('[data-tdel]').forEach(b=>b.onclick=()=>{if(confirm('ลบรายการอบรมนี้?')){a.train=a.train.filter(t=>t.id!==b.dataset.tdel);save();refresh(a);}});
+  $('#tc').querySelectorAll('[data-lic]').forEach(c=>c.onchange=()=>{a.lic[c.dataset.lic].done=c.checked;save();refresh(a);});
+  $('#tc').querySelectorAll('[data-lexam]').forEach(c=>c.onchange=()=>{a.lic[c.dataset.lexam].date=c.value;save();});
+}
+
+function tabSet(a){
+  $('#tc').innerHTML=`<div class="card sec-form center"><h2>ตั้งค่าตัวแทน</h2>
+    <div class="grid2">
+      <label class="f full">ชื่อตัวแทน<input id="nm" value="${esc(a.name)}"></label>
+      <label class="f">แผนรับรองรายได้ (บาท/เดือน)<select id="pl">${PLANS.map(p=>`<option value="${p}" ${+a.plan===p?'selected':''}>${fmt(p)}</option>`).join('')}</select></label>
+      <label class="f">เดือนเริ่มโครงการ (เดือนที่ 1)<input type="month" id="st" value="${a.start||''}"></label>
+    </div>
+    <p class="muted">เดือนที่ 1 = ${a.start?mLabel(a.start,0):'—'} · เดือนที่ 12 = ${a.start?mLabel(a.start,11):'—'}</p>
+  </div>
+  <div class="card row" style="justify-content:center"><button class="btn ghost" id="clr">ล้างยอดที่กรอกเองในตาราง</button><button class="btn danger" id="del">ลบตัวแทนนี้</button></div>`;
+  $('#nm').onchange=e=>{a.name=e.target.value.trim()||'ไม่มีชื่อ';save();renderChips();};
+  $('#pl').onchange=e=>{a.plan=+e.target.value;save();renderChips();};
+  $('#st').onchange=e=>{a.start=e.target.value;save();refresh(a);};
+  $('#clr').onclick=()=>{if(confirm('ล้างยอด FYC ที่กรอกเองทุกเดือน? (รายการขายไม่ถูกลบ)')){a.fyc=Array(12).fill('');save();refresh(a);}};
+  $('#del').onclick=()=>{if(confirm('ลบ '+a.name+' และข้อมูลทั้งหมดของคนนี้?')){state.agents=state.agents.filter(x=>x.id!==a.id);state.sel=null;save();render();}};
+}
+
+/* ===== สรุปส่ง LINE ===== */
+function agentLine(a,r){
+  const s=statusInfo(r);
+  let t=`• ${a.name} (แผน ${fmt(r.P)}) ${s.t}`;
+  if(r.status==='active'&&r.cur!=null)t+=`\n  ${mLabel(a.start,r.cur)} FYC ${fmt(r.curF)} ${r.curOK?'ผ่านเป้าแล้ว':'ขาดอีก '+fmt(r.need)}`;
+  t+=`\n  FYC สะสม ${fmt(r.cumF)} (${r.pctFYC.toFixed(0)}%) รับแล้ว ${fmt(r.paid)}`;
+  return t;
+}
+function agentSummary(a,r){return`📊 SPA สรุปผลงาน ${thDate(today())}\n${agentLine(a,r)}\n  คาดการณ์โบนัส ${fmt(r.bonus+r.extra)} บาท`;}
+function teamSummary(list){
+  let exp=0;list.forEach(({r})=>{if(r.status==='active')exp+=r.exposure;});
+  return`📊 SPA สรุปทีม ${thDate(today())}\nตัวแทน ${list.length} คน\n\n`+list.map(({a,r})=>agentLine(a,r)).join('\n')+`\n\nยอดเสี่ยงชดเชยรวม ${fmt(exp)} บาท`;
+}
+function shareText(text){
+  const m=$('#modal');
+  m.innerHTML=`<div class="modal"><div class="box"><h2 style="color:var(--navy)">สรุปส่ง LINE</h2><textarea id="sumt">${esc(text)}</textarea>
+  <div class="row" style="justify-content:center"><a class="btn line" href="https://line.me/R/msg/text/?${encodeURIComponent(text)}" target="_blank" rel="noopener">เปิด LINE</a><button class="btn green" id="cp">คัดลอก</button><button class="btn ghost" id="cl">ปิด</button></div></div></div>`;
+  $('#cl').onclick=()=>m.innerHTML='';
+  $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#sumt').value);toast('คัดลอกแล้ว');}catch(e){$('#sumt').select();toast('กดค้างที่ข้อความเพื่อคัดลอก');}};
+}
+
+/* ===== สำรอง / รวมข้อมูล ===== */
 let dl=null;
 (async()=>{try{if(window.claude&&claude.use)dl=await claude.use('downloads');}catch(e){}})();
-$('#exp').onclick=async()=>{
-  const data=JSON.stringify({app:'spa-tracker',v:1,date:new Date().toISOString(),agents:state.agents},null,2);
-  const name='spa-backup-'+new Date().toISOString().slice(0,10)+'.json';
+async function exportData(agents,prefix){
+  const data=JSON.stringify({app:'spa-tracker',v:2,date:new Date().toISOString(),agents},null,2);
+  const name=(prefix||'spa-backup').replace(/[\\/:*?"<>|\s]+/g,'-')+'-'+today()+'.json';
   if(dl){try{await dl.save({filename:name,data});toast('บันทึกไฟล์แล้ว');}catch(e){if(e&&e.code!=='declined')toast('บันทึกไฟล์ไม่ได้ในหน้านี้');}return;}
   try{const u=URL.createObjectURL(new Blob([data],{type:'application/json'}));const l=document.createElement('a');l.href=u;l.download=name;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);toast('บันทึกไฟล์แล้ว');}
   catch(e){toast('บันทึกไฟล์ไม่ได้ในหน้านี้');}
-};
+}
+$('#exp').onclick=()=>exportData(state.agents,'spa-backup');
 $('#imp').onclick=()=>$('#file').click();
 $('#file').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
-  rd.onload=()=>{try{const d=JSON.parse(rd.result);if(!Array.isArray(d.agents))throw 0;
-    if(!confirm(`นำเข้า ${d.agents.length} ตัวแทน? ข้อมูลปัจจุบันจะถูกแทนที่`))return;
-    state.agents=d.agents.map(a=>({id:a.id||uid(),name:a.name||'',plan:+a.plan||12000,license:a.license!==false,fyc:(a.fyc||[]).concat(Array(12).fill('')).slice(0,12)}));
-    state.sel=null;save();render();toast('นำเข้าข้อมูลแล้ว');}catch(x){toast('ไฟล์ไม่ถูกต้อง ใช้ไฟล์ที่บันทึกจากแอปนี้');}};
-  rd.readAsText(f);e.target.value='';};
+  rd.onload=()=>{let d;try{d=JSON.parse(rd.result);if(!Array.isArray(d.agents))throw 0;}catch(x){toast('ไฟล์ไม่ถูกต้อง ใช้ไฟล์ที่บันทึกจากแอปนี้');return;}
+    const inc=d.agents.map(norm);const m=$('#modal');
+    m.innerHTML=`<div class="modal"><div class="box"><h2 style="color:var(--navy)">นำเข้า ${inc.length} คน</h2><p class="muted">${inc.map(x=>esc(x.name)).join(', ')}</p>
+      <div class="row" style="justify-content:center"><button class="btn green" id="mg">รวมเข้าทีม</button><button class="btn danger" id="rp">แทนที่ทั้งหมด</button><button class="btn ghost" id="cn">ยกเลิก</button></div>
+      <p class="muted" style="font-size:14px">รวมเข้าทีม: คนเดิมจะอัปเดตเป็นข้อมูลใหม่ คนใหม่จะถูกเพิ่ม</p></div></div>`;
+    $('#cn').onclick=()=>m.innerHTML='';
+    $('#mg').onclick=()=>{inc.forEach(x=>{const i=state.agents.findIndex(y=>y.id===x.id);if(i>=0)state.agents[i]=x;else state.agents.push(x);});m.innerHTML='';state.sel=null;save();render();toast('รวมข้อมูลแล้ว');};
+    $('#rp').onclick=()=>{if(!confirm('ข้อมูลในเครื่องนี้จะถูกแทนที่ทั้งหมด?'))return;state.agents=inc;m.innerHTML='';state.sel=null;save();render();toast('นำเข้าข้อมูลแล้ว');};
+  };rd.readAsText(f);e.target.value='';};
 
 render();
 </script>
