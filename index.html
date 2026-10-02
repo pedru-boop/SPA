@@ -8,85 +8,99 @@
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0d2b5e;--navy2:#163d7f;--green:#b9e05a;--green-soft:#eaf6cf;
-  --bg:#f5f9ee;--card:#ffffff;--ink:#0f1a33;--muted:#3a4763;--line:#cfdcb6;
-  --warn:#e08e00;--warn-soft:#fff3d6;--bad:#d64545;--bad-soft:#fde3e3;--future:#e4e9f1;
+  --navy:#1d3f7a;--navy-ink:#13284f;
+  --bg:#f3f6fb;--card:#ffffff;--ink:#1a2540;--muted:#4a5672;--line:#dde4ef;
+  /* section tints */
+  --t-form:#ffffff;--t-track:#eef7e0;--t-stat:#e7f0fb;--t-table:#ffffff;--t-bonus:#fdf6e3;--t-backup:#f1eefa;
+  --h-track:#3d6b12;--h-stat:#1d3f7a;--h-table:#1d3f7a;--h-bonus:#8a5a00;--h-backup:#55408f;
+  --th:#dce8f7;--th-ink:#1d3f7a;--zebra:#f7f9fd;
+  --ok:#a8d86a;--ok-soft:#e3f3cc;--ok-ink:#2f5a07;
+  --warn:#f5b941;--warn-soft:#fff1d1;--warn-ink:#6b4500;
+  --bad:#e06464;--bad-soft:#fde6e6;--bad-ink:#8c1d1d;
+  --future:#e6ebf3;--future-ink:#5c6884;
+  --hero:#cfe2fb;--hero-ink:#13284f;--hero-sub:#35558a;
+  color-scheme:light;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#071631;--card:#0e2449;--ink:#ffffff;--muted:#cdd8ee;--line:#1f3c6e;--green-soft:#1c3a1a;
-  --warn-soft:#3b2d0c;--bad-soft:#3d1515;--future:#1a3360;}}
-:root[data-theme="dark"]{--bg:#071631;--card:#0e2449;--ink:#ffffff;--muted:#cdd8ee;--line:#1f3c6e;--green-soft:#1c3a1a;--warn-soft:#3b2d0c;--bad-soft:#3d1515;--future:#1a3360;}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Mali','Sarabun','Tahoma',sans-serif;font-size:17px;font-weight:500;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 b,strong{font-weight:700}
-header{background:var(--navy);color:#fff;padding:18px 16px 54px;position:relative;overflow:hidden}
-header::after{content:"";position:absolute;right:-40px;bottom:-60px;width:180px;height:180px;border:22px solid var(--green);border-radius:50%;opacity:.9}
-header h1{margin:0;font-size:26px;font-weight:700}
-header p{margin:4px 0 0;color:var(--green);font-size:15px;font-weight:600}
+header{background:linear-gradient(135deg,#d6e8fd 0%,#e4f3d2 100%);color:#13284f;border-bottom:1px solid #cfdcef;padding:20px 16px 56px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-40px;bottom:-70px;width:180px;height:180px;border:22px solid #a8d86a;border-radius:50%;opacity:.45}
+header h1{margin:0;font-size:26px;font-weight:700;color:#1d3f7a}
+header p{margin:4px 0 0;color:#3a5a8c;font-size:15px;font-weight:600}
 main{max-width:860px;margin:-38px auto 0;padding:0 12px 40px;position:relative;z-index:1}
-.card{background:var(--card);border-radius:16px;padding:14px;margin-bottom:12px;border:1px solid var(--line)}
+.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:14px;border:1px solid var(--line);box-shadow:0 2px 6px rgba(30,50,90,.06)}
+.sec-form{background:var(--t-form)}
+.sec-track{background:var(--t-track);border-color:transparent}.sec-track h2{color:var(--h-track)}
+.sec-stat{background:var(--card)}.sec-stat h2{color:var(--h-stat)}
+.sec-table{background:var(--t-table)}.sec-table h2{color:var(--h-table)}
+.sec-bonus{background:var(--t-bonus);border-color:transparent}.sec-bonus h2{color:var(--h-bonus)}
+.sec-backup{background:var(--t-backup);border-color:transparent}.sec-backup h2{color:var(--h-backup)}
 .agents{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
 .chip{flex:none;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
-.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-.chip .dot{width:9px;height:9px;border-radius:50%}
+.chip.on{background:var(--th);color:var(--th-ink);border-color:var(--navy)}
+.chip .dot{width:11px;height:11px;border-radius:50%}
 .chip.add{border-style:dashed;color:var(--muted)}
 button{font:inherit;cursor:pointer}
-.btn{border:none;border-radius:10px;padding:10px 16px;font-weight:600;background:var(--navy);color:#fff}
-.btn.green{background:var(--green);color:var(--navy);font-weight:600}
-.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.btn.danger{background:transparent;color:var(--bad);border:1px solid var(--bad)}
-:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.btn{border:none;border-radius:12px;padding:10px 16px;font-weight:600;background:#2f5fa8;color:#fff}
+.btn.green{background:var(--ok);color:#1f3d03}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:var(--card);color:var(--bad-ink);border:1px solid var(--bad)}
+:focus-visible{outline:3px solid #6aa0e8;outline-offset:2px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
 label.f{display:flex;flex-direction:column;gap:4px;font-size:15px;font-weight:600;color:var(--muted);flex:1;min-width:140px}
 input,select{font:inherit;font-size:17px;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
-.check{display:flex;gap:8px;align-items:center;font-size:15px;font-weight:500;color:var(--muted);margin-top:10px}
+.check{display:flex;gap:8px;align-items:center;font-size:15px;font-weight:500;color:var(--muted);margin-top:12px}
 .check input{width:22px;height:22px;flex:none}
-/* signature: 12-month track */
-.track{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:6px 0 4px}
-.cell{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;background:var(--future);color:var(--muted)}
-.cell.ok{background:var(--green);color:var(--navy)}
-.cell.back{background:var(--green);color:var(--navy);box-shadow:inset 0 0 0 3px var(--navy2)}
-.cell.miss{background:var(--warn);color:#3a2500}
+.track{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:6px 0 6px}
+.cell{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;background:var(--future);color:var(--future-ink)}
+.cell.ok{background:var(--ok);color:#1f3d03}
+.cell.back{background:var(--ok);color:#1f3d03;box-shadow:inset 0 0 0 3px #3d6b12}
+.cell.miss{background:var(--warn);color:#4a2f00}
 .cell.end{background:var(--bad);color:#fff}
-.cell.next{background:transparent;border:2px dashed var(--navy2);color:var(--ink)}
+.cell.next{background:var(--card);border:2px dashed var(--navy);color:var(--ink)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:600;color:var(--muted)}
-.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;background:var(--c)}
-.alert{border-radius:12px;padding:12px 14px;margin:12px 0 0;font-size:16px}
-.alert.ok{background:var(--green-soft)}
-.alert.warn{background:var(--warn-soft);border-left:5px solid var(--warn)}
-.alert.bad{background:var(--bad-soft);border-left:5px solid var(--bad)}
-.alert.done{background:var(--green-soft);border-left:5px solid var(--navy)}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:var(--c)}
+.alert{border-radius:12px;padding:12px 14px;margin:12px 0 0;font-size:16px;background:var(--card);color:var(--ink)}
+.alert.ok{border-left:5px solid var(--ok)}
+.alert.warn{background:var(--warn-soft);color:var(--warn-ink);border-left:5px solid var(--warn)}
+.alert.bad{background:var(--bad-soft);color:var(--bad-ink);border-left:5px solid var(--bad)}
+.alert.done{border-left:5px solid var(--navy)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--bg);border-radius:12px;padding:10px}
+.stat{background:var(--card);border-radius:14px;padding:12px}
 .stat b{display:block;font-size:23px;color:var(--ink)}
 .stat small{color:var(--muted);font-size:14px;font-weight:600}
-.stat.hero{background:var(--navy);color:#fff}.stat.hero b{color:var(--green)}.stat.hero small{color:#c9d6f0}
+.stats .stat:nth-child(1){background:#d6e8fd}.stats .stat:nth-child(2){background:#e3f3cf}.stats .stat:nth-child(3){background:#fff2d6}.stats .stat:nth-child(4){background:#e6f6f4}
+.stat.hero{background:var(--hero)}.stat.hero b{color:var(--hero-ink)}.stat.hero small{color:var(--hero-sub)}
+.stat.s-warn b{color:var(--warn-ink)}.stat.s-bad b{color:var(--bad-ink)}
 h2{font-size:20px;font-weight:700;margin:0 0 8px;color:var(--ink)}
-.tbl{overflow-x:auto}
+.tbl{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
 table{border-collapse:collapse;width:100%;font-size:15px;min-width:680px}
-th{background:var(--navy);color:#fff;font-weight:600;padding:9px 8px;text-align:right}
+th{background:var(--th);color:var(--th-ink);font-weight:700;padding:10px 8px;text-align:right}
 th:first-child,td:first-child{text-align:center}
 td{padding:7px 8px;font-weight:500;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-td input{width:120px;text-align:right;padding:7px 9px}
-tr.miss td{background:var(--warn-soft)}
-tr.end td{background:var(--bad-soft)}
-tr.void td{opacity:.45}
-.tag{font-size:13px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--future);color:var(--muted)}
-.tag.ok{background:var(--green);color:var(--navy)}.tag.miss{background:var(--warn);color:#3a2500}.tag.end{background:var(--bad);color:#fff}
+tbody tr:nth-child(even) td{background:var(--zebra)}
+td input{width:120px;text-align:right;padding:7px 9px;background:var(--card)}
+tbody tr.miss td{background:var(--warn-soft)}
+tbody tr.end td{background:var(--bad-soft)}
+tr.void td{opacity:.5}
+.tag{font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--future);color:var(--future-ink);display:inline-block}
+.tag.ok{background:var(--ok-soft);color:var(--ok-ink)}.tag.warn,.tag.miss{background:var(--warn-soft);color:var(--warn-ink)}.tag.bad,.tag.end{background:var(--bad-soft);color:var(--bad-ink)}.tag.done{background:var(--th);color:var(--th-ink)}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:15px}
 @media(min-width:620px){.tiers{grid-template-columns:repeat(6,1fr)}}
-.tier{border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center}
-.tier.on{background:var(--green);border-color:var(--green);color:var(--navy);font-weight:600}
-.bar{height:10px;background:var(--future);border-radius:99px;overflow:hidden;margin:8px 0}
-.bar i{display:block;height:100%;background:var(--green)}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.tier.on{background:#f5c54d;border-color:#e0a91c;color:#3d2800}
+.tier.on .muted{color:#5a3d00}
+.bar{height:12px;background:var(--card);border-radius:99px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#f5c54d,#e0a91c)}
 .ov{display:grid;gap:8px}
-.ovi{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px;border-radius:12px;background:var(--bg);cursor:pointer;border:none;width:100%;text-align:left;color:var(--ink)}
+.ovi{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px;border-radius:14px;background:var(--card);cursor:pointer;border:1px solid var(--line);width:100%;text-align:left;color:var(--ink)}
 .muted{color:var(--muted);font-size:15px}
 .empty{text-align:center;padding:26px 10px}
-.toast{font-weight:600;font-size:16px;position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast{font-weight:600;font-size:16px;position:fixed;box-shadow:0 4px 12px rgba(0,0,0,.15);left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 16px;border-radius:999px;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
@@ -97,11 +111,11 @@ tr.void td{opacity:.45}
   <p>Smart Professional Agent 2026 · คำนวณรายได้รับรองและติดตามเป้า FYC</p>
 </header>
 <main>
-  <div class="card">
+  <div class="card sec-form">
     <div class="agents" id="agents"></div>
   </div>
   <div id="view"></div>
-  <div class="card">
+  <div class="card sec-backup">
     <h2>สำรองข้อมูล</h2>
     <p class="muted" style="margin:0 0 10px">ข้อมูลบันทึกในเครื่องนี้อัตโนมัติ ควรสำรองเป็นไฟล์ไว้เป็นระยะ</p>
     <div class="row">
@@ -162,11 +176,11 @@ function calc(a){
 }
 
 function statusInfo(r){
-  if(r.status==='terminated')return{c:'var(--bad)',t:'ยกเลิกสัญญา'};
-  if(r.status==='completed')return{c:'var(--navy2)',t:'จบโครงการ'};
-  if(r.miss===1)return{c:'var(--warn)',t:'เตือน: ขาดเป้า 1 เดือน'};
-  if(r.last<0)return{c:'var(--muted)',t:'ยังไม่บันทึกผลงาน'};
-  return{c:'#7fb321',t:'ผ่านเป้า'};
+  if(r.status==='terminated')return{c:'var(--bad)',t:'ยกเลิกสัญญา',k:'bad'};
+  if(r.status==='completed')return{c:'var(--navy)',t:'จบโครงการ',k:'done'};
+  if(r.miss===1)return{c:'var(--warn)',t:'เตือน: ขาดเป้า 1 เดือน',k:'warn'};
+  if(r.last<0)return{c:'var(--future-ink)',t:'ยังไม่บันทึกผลงาน',k:''};
+  return{c:'var(--ok)',t:'ผ่านเป้า',k:'ok'};
 }
 
 /* ===== UI ===== */
@@ -193,11 +207,11 @@ function renderOverview(){
   let tot=0,warn=0,term=0;
   const items=state.agents.map(a=>{const r=calc(a),s=statusInfo(r);tot+=r.paid;if(r.miss===1&&r.status==='active')warn++;if(r.status==='terminated')term++;
     const nx=r.need!=null?`เดือน ${r.nextIdx+1} ต้องทำ FYC อีก ${fmt(r.need)}`:(r.status==='completed'?`โบนัส ${fmt(r.bonus+r.extra)}`:'');
-    return`<button class="ovi" data-id="${a.id}"><span><b>${esc(a.name)}</b><br><span class="muted">แผน ${fmt(r.P)} · ${nx}</span></span><span style="text-align:right"><span class="tag" style="background:${s.c};color:#fff">${s.t}</span><br><span class="muted">รับแล้ว ${fmt(r.paid)}</span></span></button>`;}).join('');
-  v.innerHTML=`<div class="card"><h2>ภาพรวมทีม</h2><div class="stats" style="margin-bottom:10px">
+    return`<button class="ovi" data-id="${a.id}"><span><b>${esc(a.name)}</b><br><span class="muted">แผน ${fmt(r.P)} · ${nx}</span></span><span style="text-align:right"><span class="tag ${s.k}">${s.t}</span><br><span class="muted">รับแล้ว ${fmt(r.paid)}</span></span></button>`;}).join('');
+  v.innerHTML=`<div class="card sec-stat"><h2>ภาพรวมทีม</h2><div class="stats" style="margin-bottom:10px">
     <div class="stat hero"><small>ตัวแทนทั้งหมด</small><b>${state.agents.length} คน</b></div>
-    <div class="stat"><small>ต้องเฝ้าระวัง</small><b style="color:var(--warn)">${warn} คน</b></div>
-    <div class="stat"><small>ยกเลิกสัญญา</small><b style="color:var(--bad)">${term} คน</b></div>
+    <div class="stat s-warn"><small>ต้องเฝ้าระวัง</small><b>${warn} คน</b></div>
+    <div class="stat s-bad"><small>ยกเลิกสัญญา</small><b>${term} คน</b></div>
     <div class="stat"><small>รายได้รวมที่จ่ายแล้ว</small><b>${fmt(tot)}</b></div></div>
     <div class="ov">${items}</div></div>`;
   v.querySelectorAll('.ovi').forEach(b=>b.onclick=()=>{state.sel=b.dataset.id;save();render();});
@@ -207,7 +221,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','
 
 function renderAgent(a){
   const v=$('#view');
-  v.innerHTML=`<div class="card">
+  v.innerHTML=`<div class="card sec-form">
     <div class="row">
       <label class="f">ชื่อตัวแทน<input id="nm" value="${esc(a.name)}"></label>
       <label class="f">แผนรับรองรายได้ (บาท/เดือน)<select id="pl">${PLANS.map(p=>`<option value="${p}" ${+a.plan===p?'selected':''}>${fmt(p)}</option>`).join('')}</select></label>
@@ -247,28 +261,28 @@ function renderOut(a){
   const gap=r.nextTier?`ทำ FYC เพิ่มอีก ${fmt(r.nextTier[0]/100*r.total12-r.cumF)} บาท เพื่อขึ้นขั้น ${r.nextTier[1]} เท่า (${r.nextTier[0]}%)`:'ถึงขั้นสูงสุดแล้ว';
   const grand=r.paid+(r.status==='terminated'?0:r.bonus+r.extra);
 
-  o.innerHTML=`<div class="card">
+  o.innerHTML=`<div class="card sec-track">
     <h2>เส้นทาง 12 เดือน</h2>
     <div class="track">${cells}</div>
-    <div class="legend"><span style="--c:var(--green)">ผ่านเป้า</span><span style="--c:var(--warn)">ขาดเป้า</span><span style="--c:var(--bad)">ยกเลิก</span><span style="--c:var(--future)">ยังไม่ถึง</span></div>
+    <div class="legend"><span style="--c:var(--ok)">ผ่านเป้า</span><span style="--c:var(--warn)">ขาดเป้า</span><span style="--c:var(--bad)">ยกเลิก</span><span style="--c:var(--future)">ยังไม่ถึง</span></div>
     ${alert}
   </div>
-  <div class="card"><div class="stats">
+  <div class="card sec-stat"><h2>สรุปรายได้</h2><div class="stats">
     <div class="stat hero"><small>${r.status==='terminated'?'รายได้รวมที่ได้รับ':(r.completed?'รวมทั้งโครงการ':'คาดการณ์รวม (ถ้าจบตอนนี้)')}</small><b>${fmt(grand)}</b></div>
     <div class="stat"><small>รับแล้วรายเดือน</small><b>${fmt(r.paid)}</b></div>
     <div class="stat"><small>FYC สะสม</small><b>${fmt(r.cumF)}</b></div>
     <div class="stat"><small>แผนรับรองสะสม</small><b>${fmt(r.earned)}</b></div>
   </div></div>
-  <div class="card"><h2>ผลงานรายเดือน</h2><p class="muted" style="margin:0 0 8px">กรอก FYC ที่ทำได้ในแต่ละเดือน รายได้ = ค่าที่มากกว่าระหว่าง FYC สะสมกับแผนรับรองสะสม หักที่รับไปแล้ว</p>
+  <div class="card sec-table"><h2>ผลงานรายเดือน</h2><p class="muted" style="margin:0 0 8px">กรอก FYC ที่ทำได้ในแต่ละเดือน รายได้ = ค่าที่มากกว่าระหว่าง FYC สะสมกับแผนรับรองสะสม หักที่รับไปแล้ว</p>
     <div class="tbl"><table><thead><tr><th>เดือน</th><th>%</th><th>เป้าสะสม</th><th>FYC เดือนนี้</th><th>FYC สะสม</th><th>แผนรับรองสะสม</th><th>รับเดือนนี้</th><th>สถานะ</th></tr></thead><tbody>${tbl}</tbody></table></div>
   </div>
-  <div class="card"><h2>โบนัสพิเศษเมื่อจบโครงการ</h2>
+  <div class="card sec-bonus"><h2>โบนัสพิเศษเมื่อจบโครงการ</h2>
     <div class="muted">FYC สะสม ${fmt(r.cumF)} ÷ แผนทั้งปี ${fmt(r.total12)} = <b style="color:var(--ink)">${r.pctFYC.toFixed(2)}%</b></div>
     <div class="bar"><i style="width:${pct}%"></i></div>
     <div class="tiers">${tierHtml}</div>
     <div class="alert ok">${r.status==='terminated'?'ถูกยกเลิกสัญญา ไม่มีสิทธิ์รับโบนัสพิเศษ':`โบนัส ${fmt(r.bonus)} + เพิ่ม 2 เท่า ${fmt(r.extra)} = <b>${fmt(r.bonus+r.extra)} บาท</b>${r.completed?'':' (ประมาณการ จ่ายเมื่อจบเดือน 12)'}<br>${gap}`}</div>
   </div>
-  <div class="card row" style="justify-content:space-between">
+  <div class="row" style="justify-content:space-between;margin-bottom:14px">
     <button class="btn ghost" id="clr">ล้างผลงานทั้งหมด</button>
     <button class="btn danger" id="del">ลบตัวแทนนี้</button>
   </div>`;
